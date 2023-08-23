@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Movie {
+export interface Movie {
   id: number;
   original_title: string;
+  poster_path: string;
 }
 
 interface FetchPlayingMovies {
@@ -22,7 +23,9 @@ const useMovies = () => {
       .get<FetchPlayingMovies>("/movie/now_playing", {
         signal: controller.signal,
       })
-      .then((res) => setPlayingMovies(res.data.results))
+      .then((res) => {
+        setPlayingMovies(res.data.results);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
