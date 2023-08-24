@@ -18,7 +18,7 @@ const MovieCard = ({ movie }: Props) => {
       : movie.original_title;
 
   return (
-    <Card width="275px" borderRadius={10} overflow="hidden">
+    <Card>
       <Image src={imageUrl} height="300px" alt={movie.original_title} />
       <CardBody>
         <Heading fontSize="lg">{truncatedTitle}</Heading>
