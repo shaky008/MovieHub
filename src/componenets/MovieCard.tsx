@@ -9,7 +9,7 @@ interface Props {
 
 const MovieCard = ({ movie }: Props) => {
   //construct the complete image URL
-  const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const imageUrl = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
 
   //shorten the title by adding (...) if the title length exceeds 22 character
   const truncatedTitle =
@@ -18,7 +18,7 @@ const MovieCard = ({ movie }: Props) => {
       : movie.original_title;
 
   return (
-    <Card borderRadius={10} overflow="hidden">
+    <Card width="275px" borderRadius={10} overflow="hidden">
       <Image src={imageUrl} height="300px" alt={movie.original_title} />
       <CardBody>
         <Heading fontSize="lg">{truncatedTitle}</Heading>
