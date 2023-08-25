@@ -7,6 +7,7 @@ import MovieCardContainer from "./MovieCardContainer";
 const MovieGrid = () => {
   const { playingMovies, error, isLoading } = useMovies();
 
+  //array used to render no of movie card skeleton when loading
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
