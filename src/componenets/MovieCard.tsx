@@ -21,7 +21,7 @@ const MovieCard = ({ movie }: Props) => {
   return (
     <>
       <MoviePop movie={movie}>
-        <Card _hover={{ color: "#0070f3" }}>
+        <Card _hover={{ color: "#0070f3" }} cursor="pointer">
           <Image src={imageUrl} height="300px" alt={movie.original_title} />
           <CardBody>
             <Heading fontSize="lg">{truncatedTitle}</Heading>
