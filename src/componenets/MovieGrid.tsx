@@ -3,14 +3,13 @@ import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import MovieCardSkeleton from "./MovieCardSkeleton";
 import MovieCardContainer from "./MovieCardContainer";
-import { Genre } from "../hooks/useGenre";
 
 // interface Props {
 //   selectedGenre: Genre | null
 // }
 
 const MovieGrid = () => {
-  const { playingMovies, error, isLoading } = useMovies();
+  const { data, error, isLoading } = useMovies();
 
   //array used to render no of movie card skeleton when loading
   const skeletons = [1, 2, 3, 4, 5, 6];
@@ -29,7 +28,7 @@ const MovieGrid = () => {
               <MovieCardSkeleton />
             </MovieCardContainer>
           ))}
-        {playingMovies.map((PlayingMovie) => (
+        {data.map((PlayingMovie) => (
           <MovieCardContainer key={PlayingMovie.id}>
             <MovieCard movie={PlayingMovie} />
           </MovieCardContainer>

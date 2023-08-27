@@ -4,8 +4,7 @@ import GenreCardContainer from "./GenreCardContainer";
 import GenreSkeleton from "./GenreSkeleton";
 
 const GenreList = () => {
-  const { movieGenres, error, isLoading } = useGenre();
-
+  const { data, error, isLoading } = useGenre();
   //array used to render no of genre skeletons when loading
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -20,7 +19,7 @@ const GenreList = () => {
             </GenreCardContainer>
           ))}
 
-        {movieGenres.map((genre) => (
+        {data.map((genre) => (
           <GenreCardContainer key={genre.id}>
             <ListItem key={genre.id}>
               <Text fontSize="xl">{genre.name}</Text>
