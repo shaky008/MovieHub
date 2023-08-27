@@ -2,6 +2,7 @@ import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
 import { Movie } from "../hooks/useMovies";
 import ReleaseDate from "./ReleaseDate";
 import MovieRating from "./MovieRating";
+import MoviePop from "./MoviePop";
 
 interface Props {
   movie: Movie;
@@ -18,21 +19,25 @@ const MovieCard = ({ movie }: Props) => {
       : movie.original_title;
 
   return (
-    <Card>
-      <Image src={imageUrl} height="300px" alt={movie.original_title} />
-      <CardBody>
-        <Heading fontSize="lg">{truncatedTitle}</Heading>
+    <>
+      <MoviePop movie={movie}>
+        <Card _hover={{ color: "#0070f3" }}>
+          <Image src={imageUrl} height="300px" alt={movie.original_title} />
+          <CardBody>
+            <Heading fontSize="lg">{truncatedTitle}</Heading>
 
-        <HStack justifyContent="space-between">
-          <Text>
-            <MovieRating movieRating={movie.vote_average} />
-          </Text>
-          <Text noOfLines={1} isTruncated>
-            <ReleaseDate releaseDate={movie.release_date}></ReleaseDate>
-          </Text>
-        </HStack>
-      </CardBody>
-    </Card>
+            <HStack justifyContent="space-between">
+              <Text>
+                <MovieRating movieRating={movie.vote_average} />
+              </Text>
+              <Text noOfLines={1} isTruncated>
+                <ReleaseDate releaseDate={movie.release_date}></ReleaseDate>
+              </Text>
+            </HStack>
+          </CardBody>
+        </Card>
+      </MoviePop>
+    </>
   );
 };
 

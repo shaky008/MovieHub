@@ -8,6 +8,7 @@ export interface Movie {
   poster_path: string;
   release_date: string;
   vote_average: number;
+  overview: string;
 }
 
 interface FetchPlayingMovies {
@@ -24,7 +25,7 @@ const useMovies = () => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<FetchPlayingMovies>("/movie/now_playing", {
+      .get<FetchPlayingMovies>("/discover/movie", {
         signal: controller.signal,
       })
       .then((res) => {
