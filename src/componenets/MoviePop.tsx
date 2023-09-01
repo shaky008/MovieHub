@@ -8,22 +8,24 @@ import {
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Movie } from "../hooks/useMovies";
+import { Series } from "../hooks/useSeries";
 
 interface Props {
   children: ReactNode;
-  movie: Movie;
+  item: Movie | Series;
 }
 
-const MoviePop = ({ children, movie }: Props) => {
+const MoviePop = ({ children, item }: Props) => {
+  const isMovie = "original_title" in item; // Check if the item has "original_title"
   return (
     <Popover trigger="hover">
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
         <PopoverContent borderRadius={10}>
           <PopoverHeader fontSize={22} fontWeight="bold">
-            {movie.original_title}
+            {isMovie ? item.original_title : item.original_name}
           </PopoverHeader>
-          <PopoverBody>{movie.overview}</PopoverBody>
+          <PopoverBody>{item.overview}</PopoverBody>
         </PopoverContent>
       </Portal>
     </Popover>

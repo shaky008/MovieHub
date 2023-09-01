@@ -1,18 +1,18 @@
 import useData from "./useData";
 import { Genre } from "./useGenre";
 
-export interface Movie {
+export interface Series {
   id: number;
-  original_title: string;
+  original_name: string;
   poster_path: string;
-  release_date: string;
+  first_air_date: string;
   vote_average: number;
   overview: string;
 }
 
-const useMovies = (selectedGenre: Genre | null) =>
-  useData<Movie>(
-    "/discover/movie",
+const useSeries = (selectedGenre: Genre | null) =>
+  useData<Series>(
+    "/discover/tv",
     {
       params: {
         with_genres: selectedGenre?.id
@@ -23,4 +23,4 @@ const useMovies = (selectedGenre: Genre | null) =>
     [selectedGenre?.id]
   );
 
-export default useMovies;
+export default useSeries;
