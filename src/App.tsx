@@ -4,6 +4,9 @@ import MovieGrid from "./componenets/MovieGrid";
 import GenreList from "./componenets/GenreList";
 import { Genre } from "./hooks/useGenre";
 import { useState } from "react";
+import EntertainmentMenu from "./componenets/EntertainmentMenu";
+// import { Movie } from "./hooks/useMovies";
+// import { Series } from "./hooks/useSeries";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -31,6 +34,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <EntertainmentMenu />
         <MovieGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
