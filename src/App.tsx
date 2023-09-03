@@ -10,6 +10,9 @@ import EntertainmentMenu from "./componenets/EntertainmentMenu";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedMediaType, setSelectedMediaType] = useState<String | null>(
+    null
+  );
 
   return (
     <Grid
@@ -34,8 +37,16 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <EntertainmentMenu />
-        <MovieGrid selectedGenre={selectedGenre} />
+        <EntertainmentMenu
+          onSelectMedia={(media) => {
+            setSelectedMediaType(media);
+            console.log(media);
+          }}
+        />
+        <MovieGrid
+          selectedMediaType={selectedMediaType}
+          selectedGenre={selectedGenre}
+        />
       </GridItem>
     </Grid>
   );
