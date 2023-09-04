@@ -3,17 +3,18 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
 interface Props {
   onSelectMedia: (media: String) => void;
+  selectedMedia: String | null;
 }
 
-const EntertainmentMenu = ({ onSelectMedia }: Props) => {
+const EntertainmentMenu = ({ onSelectMedia, selectedMedia }: Props) => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<AiOutlineArrowDown />}>
-        EntertainmentMenu
+        {selectedMedia || "Entertainment Menu"}
       </MenuButton>
       <MenuList>
         <MenuItem onClick={() => onSelectMedia("movies")}>Movies</MenuItem>
-        <MenuItem onClick={() => onSelectMedia("series")}>Tv</MenuItem>
+        <MenuItem onClick={() => onSelectMedia("series")}>Tv Series</MenuItem>
       </MenuList>
     </Menu>
   );

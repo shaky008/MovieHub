@@ -5,11 +5,12 @@ import GenreList from "./componenets/GenreList";
 import { Genre } from "./hooks/useGenre";
 import { useState } from "react";
 import EntertainmentMenu from "./componenets/EntertainmentMenu";
-// import { Movie } from "./hooks/useMovies";
-// import { Series } from "./hooks/useSeries";
 
 function App() {
+  //keep tracks of selected genre from the genre list
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
+  //keep tracks of selected media type (movie or tv series)
   const [selectedMediaType, setSelectedMediaType] = useState<String | null>(
     null
   );
@@ -38,9 +39,9 @@ function App() {
       </Show>
       <GridItem area="main">
         <EntertainmentMenu
+          selectedMedia={selectedMediaType}
           onSelectMedia={(media) => {
             setSelectedMediaType(media);
-            console.log(media);
           }}
         />
         <MovieGrid

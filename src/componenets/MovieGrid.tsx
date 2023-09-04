@@ -14,6 +14,7 @@ interface Props {
 
 const MovieGrid = ({ selectedGenre, selectedMediaType }: Props) => {
   const { data, error, isLoading } = useMovies(selectedGenre);
+
   const {
     data: series,
     error: seriesError,
