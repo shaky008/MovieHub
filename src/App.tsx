@@ -6,14 +6,13 @@ import { Genre } from "./hooks/useGenre";
 import { useState } from "react";
 import EntertainmentMenu from "./componenets/EntertainmentMenu";
 
-function App() {
-  //keep tracks of selected genre from the genre list
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+export interface MediaQuery {
+  genre: Genre | null;
+  media: String | null;
+}
 
-  //keep tracks of selected media type (movie or tv series)
-  const [selectedMediaType, setSelectedMediaType] = useState<String | null>(
-    null
-  );
+function App() {
+  const [mediaQuery, setMediaQuery] = useState<MediaQuery>({} as MediaQuery);
 
   return (
     <Grid
@@ -32,22 +31,19 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={2}>
           <GenreList
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
-            presentGenre={selectedGenre}
+            onSelectGenre={(genre) => setMediaQuery({ ...mediaQuery, genre })}
+            presentGenre={mediaQuery.genre}
           />
         </GridItem>
       </Show>
       <GridItem area="main">
         <EntertainmentMenu
-          selectedMedia={selectedMediaType}
+          selectedMedia={mediaQuery.media}
           onSelectMedia={(media) => {
-            setSelectedMediaType(media);
+            setMediaQuery({ ...mediaQuery, media });
           }}
         />
-        <MovieGrid
-          selectedMediaType={selectedMediaType}
-          selectedGenre={selectedGenre}
-        />
+        <MovieGrid mediaQuery={mediaQuery} />
       </GridItem>
     </Grid>
   );

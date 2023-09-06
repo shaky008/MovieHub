@@ -1,5 +1,5 @@
+import { MediaQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenre";
 
 export interface Movie {
   id: number;
@@ -10,17 +10,17 @@ export interface Movie {
   overview: string;
 }
 
-const useMovies = (selectedGenre: Genre | null) =>
+const useMovies = (mediaQuery: MediaQuery) =>
   useData<Movie>(
     "/discover/movie",
     {
       params: {
-        with_genres: selectedGenre?.id
-          ? selectedGenre.id.toString()
+        with_genres: mediaQuery.genre?.id
+          ? mediaQuery.genre.id.toString()
           : undefined,
       },
     },
-    [selectedGenre?.id]
+    [mediaQuery.genre?.id]
   );
 
 export default useMovies;
