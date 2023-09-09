@@ -28,7 +28,7 @@ const GenreList = ({ onSelectGenre, presentGenre }: Props) => {
           <GenreCardContainer key={genre.id}>
             <ListItem key={genre.id}>
               <Button
-                color={genre.id === presentGenre?.id ? "blue" : "normal"}
+                color={genre.id === presentGenre?.id ? "#0070f3" : "normal"}
                 fontSize="xl"
                 variant="link"
                 onClick={() => onSelectGenre(genre)}
