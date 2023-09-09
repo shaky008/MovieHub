@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import Navbar from "./componenets/Navbar";
 import MovieGrid from "./componenets/MovieGrid";
 import GenreList from "./componenets/GenreList";
@@ -6,6 +6,7 @@ import { Genre } from "./hooks/useGenre";
 import { useState } from "react";
 import EntertainmentMenu from "./componenets/EntertainmentMenu";
 import MediaHeading from "./componenets/MediaHeading";
+import ResponsiveSlider from "./componenets/ResponsiveSlider";
 
 export interface MediaQuery {
   genre: Genre | null;
@@ -40,12 +41,24 @@ function App() {
       <GridItem area="main">
         <Box paddingLeft={2}>
           <MediaHeading mediaQuery={mediaQuery} />
-          <EntertainmentMenu
-            selectedMedia={mediaQuery.media}
-            onSelectMedia={(media) => {
-              setMediaQuery({ ...mediaQuery, media });
-            }}
-          />
+          <HStack>
+            <Show below="lg">
+              <ResponsiveSlider>
+                <GenreList
+                  onSelectGenre={(genre) =>
+                    setMediaQuery({ ...mediaQuery, genre })
+                  }
+                  presentGenre={mediaQuery.genre}
+                />
+              </ResponsiveSlider>
+            </Show>
+            <EntertainmentMenu
+              selectedMedia={mediaQuery.media}
+              onSelectMedia={(media) => {
+                setMediaQuery({ ...mediaQuery, media });
+              }}
+            />
+          </HStack>
         </Box>
         <MovieGrid mediaQuery={mediaQuery} />
       </GridItem>
