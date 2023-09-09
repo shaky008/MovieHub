@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
 import Navbar from "./componenets/Navbar";
 import MovieGrid from "./componenets/MovieGrid";
 import GenreList from "./componenets/GenreList";
@@ -38,13 +38,15 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <MediaHeading mediaQuery={mediaQuery} />
-        <EntertainmentMenu
-          selectedMedia={mediaQuery.media}
-          onSelectMedia={(media) => {
-            setMediaQuery({ ...mediaQuery, media });
-          }}
-        />
+        <Box paddingLeft={2}>
+          <MediaHeading mediaQuery={mediaQuery} />
+          <EntertainmentMenu
+            selectedMedia={mediaQuery.media}
+            onSelectMedia={(media) => {
+              setMediaQuery({ ...mediaQuery, media });
+            }}
+          />
+        </Box>
         <MovieGrid mediaQuery={mediaQuery} />
       </GridItem>
     </Grid>
