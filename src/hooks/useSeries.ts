@@ -1,5 +1,5 @@
+import { MediaQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenre";
 
 export interface Series {
   id: number;
@@ -10,17 +10,17 @@ export interface Series {
   overview: string;
 }
 
-const useSeries = (selectedGenre: Genre | null) =>
+const useSeries = (mediaQuery: MediaQuery) =>
   useData<Series>(
     "/discover/tv",
     {
       params: {
-        with_genres: selectedGenre?.id
-          ? selectedGenre.id.toString()
+        with_genres: mediaQuery.genre?.id
+          ? mediaQuery.genre.id.toString()
           : undefined,
       },
     },
-    [selectedGenre?.id]
+    [mediaQuery.genre?.id]
   );
 
 export default useSeries;

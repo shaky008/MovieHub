@@ -18,7 +18,7 @@ const MovieGrid = ({ mediaQuery }: Props) => {
     data: series,
     error: seriesError,
     isLoading: seriesLoading,
-  } = useSeries(mediaQuery.genre);
+  } = useSeries(mediaQuery);
   //array used to render no of movie card skeleton when loading
   const skeletons = [1, 2, 3, 4, 5, 6];
 
