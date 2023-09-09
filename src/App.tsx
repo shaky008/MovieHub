@@ -5,6 +5,7 @@ import GenreList from "./componenets/GenreList";
 import { Genre } from "./hooks/useGenre";
 import { useState } from "react";
 import EntertainmentMenu from "./componenets/EntertainmentMenu";
+import MediaHeading from "./componenets/MediaHeading";
 
 export interface MediaQuery {
   genre: Genre | null;
@@ -37,6 +38,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <MediaHeading mediaQuery={mediaQuery} />
         <EntertainmentMenu
           selectedMedia={mediaQuery.media}
           onSelectMedia={(media) => {
